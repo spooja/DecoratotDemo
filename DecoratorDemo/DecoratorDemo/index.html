@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>My angular demo</title>
+    <!--<script src="Scripts/angular.min.js" type="text/javascript"></script>-->
+
+   
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+   
+    <script src="app.js" type="text/javascript"></script>
+    <script src="MainController.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+
+
+    <div class="scope" ng-app="app" ng-controller="MainController">
+        <h3>angular js</h3>
+        <br />
+        Name: <br />
+        <input type="text" ng-model="inputData.Name" placeholder="Name" />
+        <br />
+        Designation: <br />
+        <input type="text" ng-model="inputData.Designation" placeholder="Designation" />
+        <br />
+        Location : <br />
+        <input type="text" ng-model="inputData.Location" placeholder="Location" />
+        <br />
+
+        <button ng-click="addUsers()" ng-hide="isEdit">Add Users</button>
+        <button ng-click="updateUser()" ng-show="isEdit">Update</button>
+        <button ng-click="clearInput()">Reset</button>
+
+      
+        <br />
+        <br />
+        <strong>Search </strong>
+        <input type="text" ng-model="nameText" placeholder="type any field here" />
+        <br />
+        <ul>
+            <li ng-repeat="element in users | filter:nameText |orderBy : ['Name','Designation','Location']">
+                <strong>[{{$index+1}}] {{element.Name | uppercase }} works as {{element.Designation}} in {{element.Location}} </strong>
+                [
+                <a href="#" ng-click="clearUser(element)">Clear</a>
+                <a href="#" ng-click="removeUser(element)">Remove</a>
+                |<a href="#" ng-click="editUser(element)">Edit</a>
+                ]
+
+            </li>
+
+        </ul>
+        <div abc></div>
+
+    </div>
+
+
+
+</body>
+</html>
